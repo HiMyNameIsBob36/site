@@ -20,45 +20,45 @@ class SiteHeader extends HTMLElement {
         <div id="sidebar" class="sidebar ${isCollapsed ? 'collapsed' : ''}">
             <div class="sidebar-inner">
                 <nav class="navList">
-                    <a href="https://aunsw.netlify.app/" class="navItem" data-path="/home">
+                    <a href="https://hey36.netlify.app/" class="navItem" data-path="/home">
                         <div class="icon-wrapper"><img src="../media/home.png" class="icon-green"></div>
                         <span class="nav-text text-green">Home</span>
                     </a>
-                    <a href="https://aunsw.netlify.app/notifications" class="navItem" data-path="/notifications">
+                    <a href="https://hey36.netlify.app/notifications" class="navItem" data-path="/notifications">
                         <div class="icon-wrapper"><img src="../media/notifications.png"></div>
                         <span class="nav-text">Notifications</span>
                     </a>
-                    <a href="https://aunsw.netlify.app/tools" class="navItem" data-path="/tools">
+                    <a href="https://hey36.netlify.app/tools" class="navItem" data-path="/tools">
                         <div class="icon-wrapper"><img src="../media/tools.png"></div>
                         <span class="nav-text">Tools</span>
                     </a>
                     
                     <div class="nav-section"><span class="nav-title">RECENTLY UPDATED</span></div>
 
-                    <a href="https://aunsw.netlify.app/projects/the-bridge" class="navItem" data-path="/projects/the-bridge">
+                    <a href="https://hey36.netlify.app/projects/the-bridge" class="navItem" data-path="/projects/the-bridge">
                         <div class="icon-wrapper"><img src="../media/projects/the-bridge.png"></div>
                         <span class="nav-text">The Bridge</span>
                     </a>
-                    <a href="https://aunsw.netlify.app/projects/bobway" class="navItem" data-path="/projects/bobway">
+                    <a href="https://hey36.netlify.app/projects/bobway" class="navItem" data-path="/projects/bobway">
                         <div class="icon-wrapper"><img src="../media/projects/bobway.png"></div>
                         <span class="nav-text">BOBWAY</span>
                     </a>
-                    <a href="https://aunsw.netlify.app/projects/whats-different" class="navItem" data-path="/projects/whats-different">
+                    <a href="https://hey36.netlify.app/projects/whats-different" class="navItem" data-path="/projects/whats-different">
                         <div class="icon-wrapper"><img src="../media/projects/whats-different.png"></div>
                         <span class="nav-text">Whats Different</span>
                     </a>
-                    <a href="https://aunsw.netlify.app/projects/ranks+" class="navItem" data-path="/projects/ranks+">
+                    <a href="https://hey36.netlify.app/projects/ranks+" class="navItem" data-path="/projects/ranks+">
                         <div class="icon-wrapper"><img src="../media/projects/ranks+.png"></div>
                         <span class="nav-text">Ranks+</span>
                     </a>
-                    <a href="https://aunsw.netlify.app/projects/site-tools" class="navItem" data-path="/projects/site-tools">
+                    <a href="https://hey36.netlify.app/projects/site-tools" class="navItem" data-path="/projects/site-tools">
                         <div class="icon-wrapper"><img src="../media/projects/site-tools.png"></div>
                         <span class="nav-text">Website Tools</span>
                     </a>
 
                     <div class="nav-section"><span class="nav-title">ARCHIVED</span></div>
 
-                    <a href="https://aunsw.netlify.app/projects/kit-pvp" class="navItem" data-path="/projects/kit-pvp">
+                    <a href="https://hey36.netlify.app/projects/kit-pvp" class="navItem" data-path="/projects/kit-pvp">
                         <div class="icon-wrapper"><img src="../media/projects/kit-pvp.png"></div>
                         <span class="nav-text">Kit PvP</span>
                     </a>
