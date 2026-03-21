@@ -53,14 +53,10 @@ class SiteHeader extends HTMLElement {
                 </nav>
 
                 <div class="sidebarFooter">
-                    <button id="toggleSidebar" class="navItem toggle-btn">
+                    <div id="toggleSidebar" class="navItem toggle-btn">
                         <div class="icon-wrapper"><img src="../media/sidebar-toggle.png"></div>
                         <span class="nav-text">Toggle Sidebar</span>
-                    </button>
-                    <a href="/sign-out" class="navItem">
-                        <div class="icon-wrapper"><img src="../media/signout.png"></div>
-                        <span class="nav-text">Sign out</span>
-                    </a>
+                    </div>
                 </div>
             </div>
         </div>`;
