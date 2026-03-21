@@ -36,7 +36,7 @@ async function checkForUpdates() {
                 spawnToast(item);
             }
         });
-    } catch (err) { console.error("Update check failed:", err); }
+    } catch (err) { console.log("Update check failed"); }
 }
 
 function spawnToast(item) {
