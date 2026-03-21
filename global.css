@@ -1,0 +1,160 @@
+body {
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    background: #18171B;
+    color: white;
+}
+
+/* --- THEME COLORS --- */
+:root {
+    --bg-sidebar: #2A2C2F;
+    --bg-hover: #33393A;
+    --bg-active: #468be4;
+    --border-color: rgba(255,255,255,0.1);
+}
+
+.button {
+    color: white;
+    background: var(--bg-sidebar);
+    border: 1px solid #46494A;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.button:hover {
+    background: var(--bg-hover);
+}
+
+/* --- NAVBAR --- */
+.navbar {
+    display: flex;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 12px 20px;
+    background: #11131a;
+    z-index: 900;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+}
+
+.logo img { height: 28px; }
+
+/* --- SIDEBAR --- */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -320px; /* Hidden by default */
+    width: 300px;
+    height: 100%;
+    background: var(--bg-sidebar);
+    display: flex;
+    flex-direction: column;
+    transition: left 0.3s ease;
+    z-index: 1000;
+    border-right: 1px solid var(--border-color);
+}
+
+.sidebar.open {
+    left: 0;
+}
+
+#overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s;
+    z-index: 950;
+}
+
+#overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* --- NAVIGATION ITEMS --- */
+.navList {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 4px;
+}
+
+.navItem, .dept-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: white;
+    transition: 0.2s;
+}
+
+.navItem img, .dept-item img {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0; /* Ensures icons always show properly */
+}
+
+/* HOVER & ACTIVE STATES */
+.navItem:hover, .dept-item:hover {
+    background: var(--bg-hover);
+}
+
+.navItem.active, .dept-item a.active {
+    background: var(--bg-active) !important;
+    font-weight: 600;
+}
+
+/* --- DROPDOWN --- */
+.dropdownContent {
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+    margin-top: 4px;
+}
+
+.dept-item a {
+    color: white;
+    text-decoration: none;
+    width: 100%;
+}
+
+/* --- FOOTER & TOGGLE --- */
+.sidebarFooter {
+    margin-top: auto;
+    padding: 20px;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.menuBtn {
+    width: 100%;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.social {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.socialBtn img {
+    width: 20px;
+}
