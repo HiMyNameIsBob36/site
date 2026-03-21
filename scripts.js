@@ -1,93 +1,101 @@
+/* --- UTILITIES --- */
+function revealOnScroll() {
+    const reveals = document.querySelectorAll(".reveal");
+    const windowHeight = window.innerHeight;
+    reveals.forEach((el) => {
+        const elementTop = el.getBoundingClientRect().top;
+        if (elementTop < windowHeight - 100) {
+            el.classList.add("active");
+        }
+    });
+}
+
+/* --- CUSTOM HEADER ELEMENT --- */
 class SiteHeader extends HTMLElement {
     connectedCallback() {
-        this.render();
-        this.setActivePage();
-        this.setupEventListeners();
-    }
+        // Check localStorage for sidebar state (default to 'open')
+        const isCollapsed = localStorage.getItem('sidebarCollapsed') === 'true';
 
-    render() {
         this.innerHTML = `
-        <div id="overlay"></div>
-        <div class="navbar">
-            <a href="https://aunsw.netlify.app/" class="logo">
-                <img src="../media/logo.png">
-                <span>New South Wales Roleplay</span>
-            </a>
-            <div class="nav-right">
-                <!-- Placeholder for right-side items if needed -->
-            </div>
-        </div>
+        <div id="sidebar" class="sidebar ${isCollapsed ? 'collapsed' : ''}">
+            <div class="sidebar-inner">
+                <nav class="navList">
+                    <a href="https://aunsw.netlify.app/properties" class="navItem" data-path="/properties">
+                        <div class="icon-wrapper"><img src="../media/edit.png" class="icon-green"></div>
+                        <span class="nav-text text-green">Properties</span>
+                    </a>
+                    <a href="https://aunsw.netlify.app/tree" class="navItem" data-path="/tree">
+                        <div class="icon-wrapper"><img src="../media/tree.png"></div>
+                        <span class="nav-text">Tree</span>
+                    </a>
+                    <a href="https://aunsw.netlify.app/code" class="navItem" data-path="/code">
+                        <div class="icon-wrapper"><img src="../media/code.png"></div>
+                        <span class="nav-text">Code</span>
+                    </a>
+                    
+                    <div class="nav-spacer"></div>
 
-        <div id="sidebar" class="sidebar">
-            <div class="sidebarHeader">
-                <div class="serverName"><img src="../media/logo.png">NSWRP</div>
-            </div>
+                    <a href="https://aunsw.netlify.app/view" class="navItem" data-path="/view">
+                        <div class="icon-wrapper"><img src="../media/view.png"></div>
+                        <span class="nav-text">View</span>
+                    </a>
+                    <a href="https://aunsw.netlify.app/export" class="navItem" data-path="/export">
+                        <div class="icon-wrapper"><img src="../media/export.png"></div>
+                        <span class="nav-text">Export</span>
+                    </a>
 
-            <nav class="navList">
-                <details class="dropdown">
-                    <summary class="navItem"><img src="../media/departments.png"><span>Departments</span></summary>
-                    <div class="dropdownContent">
-                        <div class="dept-item"><img src="../media/department/police.png"><a href="https://aunsw.netlify.app/departments#police">Police</a></div>
-                        <div class="dept-item"><img src="../media/department/afp.png"><a href="https://aunsw.netlify.app/departments#afp">AFP</a></div>
-                        <div class="dept-item"><img src="../media/department/fire.png"><a href="https://aunsw.netlify.app/departments#fire">Fire & Rescue</a></div>
-                        <div class="dept-item"><img src="../media/department/ambulance.png"><a href="https://aunsw.netlify.app/departments#ambulace">Paramedics</a></div>
-                        <div class="dept-item"><img src="../media/department/dot.png"><a href="https://aunsw.netlify.app/departments#dot">Transport NSW</a></div>
-                    </div>
-                </details>
+                    <div class="nav-spacer"></div>
 
-                <a href="https://aunsw.netlify.app/meet-the-team" class="navItem"><img src="../media/team.png"><span>Meet the Team</span></a>
-                <a href="https://aunsw.netlify.app/affiliates" class="navItem"><img src="../media/affiliates.png"><span>Affiliates</span></a>
-                <a href="https://aunsw.netlify.app/rules" class="navItem"><img src="../media/rulebook.png"><span>Rules & Guidelines</span></a>
-            </nav>
+                    <a href="https://aunsw.netlify.app/diff" class="navItem" data-path="/diff">
+                        <div class="icon-wrapper"><img src="../media/diff.png"></div>
+                        <span class="nav-text">Diff</span>
+                    </a>
+                </nav>
 
-            <div class="sidebarFooter">
-                <!-- Sidebar Toggle/Open Button now at the bottom -->
-                <button id="openNav" class="menuBtn button">☰ Toggle Sidebar</button>
-                <div class="social">
-                    <a class="button socialBtn" href="https://www.youtube.com/@NSWERLC" target="_blank"><img src="../media/youtube.png"></a>
-                    <a class="button socialBtn" href="https://discord.gg/rWtnWX5Esy" target="_blank"><img src="../media/discord.png"></a>
+                <div class="sidebarFooter">
+                    <button id="toggleSidebar" class="navItem toggle-btn">
+                        <div class="icon-wrapper"><img src="../media/sidebar-toggle.png"></div>
+                        <span class="nav-text">Toggle Sidebar</span>
+                    </button>
+                    <a href="/sign-out" class="navItem">
+                        <div class="icon-wrapper"><img src="../media/signout.png"></div>
+                        <span class="nav-text">Sign out</span>
+                    </a>
                 </div>
             </div>
         </div>`;
-    }
 
-    setActivePage() {
-        const currentUrl = window.location.href;
-        const navItems = this.querySelectorAll('.navItem, .dept-item a');
-        
-        navItems.forEach(item => {
-            if (item.href === currentUrl) {
-                item.classList.add('active');
-                // If it's inside a dropdown, open the dropdown
-                const details = item.closest('details');
-                if (details) details.open = true;
-            }
-        });
+        this.setupEventListeners();
+        this.highlightActivePage();
     }
 
     setupEventListeners() {
         const sidebar = this.querySelector("#sidebar");
-        const overlay = this.querySelector("#overlay");
-        const btn = this.querySelector("#openNav");
+        const toggleBtn = this.querySelector("#toggleSidebar");
 
-        const toggleSidebar = () => {
-            sidebar.classList.toggle("open");
-            overlay.classList.toggle("show");
+        toggleBtn.onclick = () => {
+            const isNowCollapsed = sidebar.classList.toggle("collapsed");
+            // Save preference to localStorage
+            localStorage.setItem('sidebarCollapsed', isNowCollapsed);
         };
+    }
 
-        btn.onclick = toggleSidebar;
-        overlay.onclick = toggleSidebar;
+    highlightActivePage() {
+        const currentPath = window.location.pathname;
+        const navItems = this.querySelectorAll(".navItem");
+
+        navItems.forEach(item => {
+            const itemPath = item.getAttribute('data-path');
+            if (itemPath && currentPath.includes(itemPath)) {
+                item.classList.add("active-page");
+                // The CSS handles the color change for the image and text automatically via the .active-page class
+            }
+        });
     }
 }
 
 customElements.define('the-header', SiteHeader);
 
-// Simple Reveal Logic
-window.addEventListener("scroll", () => {
-    const reveals = document.querySelectorAll(".reveal");
-    reveals.forEach((el) => {
-        if (el.getBoundingClientRect().top < window.innerHeight - 100) {
-            el.classList.add("active");
-        }
-    });
-});
+/* --- INITIALIZATION --- */
+window.addEventListener("scroll", revealOnScroll);
+window.addEventListener("DOMContentLoaded", revealOnScroll);
