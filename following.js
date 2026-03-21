@@ -53,7 +53,7 @@ async function checkForUpdates() {
             showUpdateToast(newUpdates[0], newUpdates.slice(1));
         }
     } catch (err) {
-        console.error("Could not load updates:");
+        console.error("Could not load updates", err);
     }
 }
 
