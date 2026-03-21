@@ -41,7 +41,7 @@ function initHeartButtons() {
 // 2. Check for New Updates
 async function checkForUpdates() {
     try {
-        const response = await fetch(updates.json);
+        const response = await fetch(../updates.json);
         const allUpdates = await response.json();
 
         // Filter: Project must be followed AND update not seen yet
@@ -53,7 +53,7 @@ async function checkForUpdates() {
             showUpdateToast(newUpdates[0], newUpdates.slice(1));
         }
     } catch (err) {
-        console.error("Could not load updates");
+        console.log("Could not load updates", err);
     }
 }
 
