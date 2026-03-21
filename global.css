@@ -111,7 +111,7 @@ body {
 .text-green { color: var(--accent-green) !important; }
 .icon-green { filter: grayscale(0) !important; opacity: 1 !important; }
 
-/* SPACER LINES */
+/* SPACER LINES
 .nav-spacer {
     height: 1px;
     background: rgba(255,255,255,0.05);
@@ -120,6 +120,31 @@ body {
 
 .sidebar.collapsed .nav-spacer {
     margin: 15px 10px;
+}*/
+
+.nav-section {
+    display: flex;
+    align-items: center;
+    margin: 20px;
+    color: rgba(255,255,255,0.4);
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+.nav-section::before,
+.nav-section::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-section span {
+    padding: 0 10px;
+}
+
+.sidebar.collapsed .nav-section {
+    display: none;
 }
 
 /* FOOTER */
