@@ -33,7 +33,7 @@ class SiteHeader extends HTMLElement {
                         <span class="nav-text">Code</span>
                     </a>
                     
-                    <div class="nav-spacer"></div>
+                    <div class="nav-section"><span class="nav-title">RECENTLY UPDATED</span></div>
 
                     <a href="https://aunsw.netlify.app/view" class="navItem" data-path="/view">
                         <div class="icon-wrapper"><img src="../media/view.png"></div>
