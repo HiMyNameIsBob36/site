@@ -1,16 +1,15 @@
 Hey! I want to make a new changes to this code, can you do it for me?
-> I want you to remove all the search features (include the keybind)
+> I want you to remove all the search features (include the keybind & CSS)
 > Make the “SiteHeader” custom element changes below.
-* I also want you to create somthing where I don't have to make a custom elemet for every page, so it can display a diffrent colour for active page.
-* Icons always showing
-* Sidebar open button at the bottom
-* Refined colours, see the colour pallet below.
-- Background: #2A2C2F
-- Hover: #33393A
-- Active: #468be4
+* Make it just like the image I sent
+* Always show the icons.
+* Change the CSS too.
+* Can you make a way where I don't have to make a custom element for every page, it just auto detects it and makes the image & text that colour
+* IF POSIBBLE, can you get it to remember if the sidebar was open or closed and keep it for the future pages (if its not possible with just JS, no worries)
 
-> Using the CSS this time, can you add the necessary lines of code for the new sidebar? (and fix the formatting)
-> Also, remove all the search CSS
+> Using the CSS this time, can you add the necessary lines of code for the new sidebar?
+> Can you fix the formatting too?
+
 function revealOnScroll() {
     const reveals = document.querySelectorAll(".reveal");
     const windowHeight = window.innerHeight;
