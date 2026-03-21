@@ -14,7 +14,7 @@ body {
     color: white;
 }
 
-.main-content {
+main {
     flex: 1;
     margin-left: calc(var(--sidebar-collapsed-width) + 20px); /* Pushes content to the right */
     transition: margin-left 0.3s ease;
