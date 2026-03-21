@@ -55,6 +55,13 @@ class SiteHeader extends HTMLElement {
                         <div class="icon-wrapper"><img src="../media/projects/site-tools.png"></div>
                         <span class="nav-text">Website Tools</span>
                     </a>
+
+                    <div class="nav-section"><span class="nav-title">ARCHIVED</span></div>
+
+                    <a href="https://aunsw.netlify.app/projects/kit-pvp" class="navItem" data-path="/projects/kit-pvp">
+                        <div class="icon-wrapper"><img src="../media/projects/kit-pvp.png"></div>
+                        <span class="nav-text">Kit PvP</span>
+                    </a>
                 </nav>
 
                 <div class="sidebarFooter">
