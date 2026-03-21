@@ -1,0 +1,16 @@
+[
+  {
+    "id": "upd_001",
+    "project": "Police Script",
+    "changelog": "Added new sirens and UI fixes.",
+    "viewUrl": "https://aunsw.netlify.app/changelogs/police",
+    "timestamp": "2026-03-22"
+  },
+  {
+    "id": "upd_002",
+    "project": "Fire Dept UI",
+    "changelog": "Fixed scaling issues on mobile.",
+    "viewUrl": "https://aunsw.netlify.app/changelogs/fire",
+    "timestamp": "2026-03-21"
+  }
+]
