@@ -1,6 +1,6 @@
 /* --- NOTIFICATION & ALERTS SYSTEM --- */
 
-const UPDATES_FILE = './updates.json';
+const UPDATES_FILE = '../updates.json';
 let followed = JSON.parse(localStorage.getItem('followedProjects')) || [];
 let seenUpdates = JSON.parse(localStorage.getItem('seenUpdates')) || [];
 let clickedUpdates = JSON.parse(localStorage.getItem('clickedUpdates')) || [];
@@ -22,7 +22,7 @@ function createToastContainer() {
 
 async function checkForUpdates() {
     try {
-        const response = await fetch(updates.json + '?t=' + Date.now()); // Prevent caching
+        const response = await fetch(../updates.json + '?t=' + Date.now()); // Prevent caching
         const allUpdates = await response.json();
         const container = document.getElementById('toast-container');
 
