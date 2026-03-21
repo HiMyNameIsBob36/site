@@ -49,7 +49,7 @@ function initHeartButtons() {
 
 async function checkForUpdates() {
     try {
-        const response = await fetch(alerts.json + '?t=' + Date.now());
+        const response = await fetch("../alerts.json");
         const allUpdates = await response.json();
 
         allUpdates.forEach(item => {
@@ -61,7 +61,7 @@ async function checkForUpdates() {
                 spawnToast(item);
             }
         });
-    } catch (err) { console.error("Update fetch error:", err); }
+    } catch (err) { console.log("Update fetch error") }
 }
 
 function spawnToast(item) {
