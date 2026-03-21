@@ -1,6 +1,6 @@
 /* --- FAVORITES & NOTIFICATIONS LOGIC --- */
 
-const UPDATES_FILE = './updates.json'; // Ensure path is correct
+const UPDATES_FILE = './notifications.json'; // Ensure path is correct
 
 // Initialize Storage
 let followed = JSON.parse(localStorage.getItem('followedProjects')) || [];
