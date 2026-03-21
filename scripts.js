@@ -20,35 +20,40 @@ class SiteHeader extends HTMLElement {
         <div id="sidebar" class="sidebar ${isCollapsed ? 'collapsed' : ''}">
             <div class="sidebar-inner">
                 <nav class="navList">
-                    <a href="https://aunsw.netlify.app/properties" class="navItem" data-path="/properties">
-                        <div class="icon-wrapper"><img src="../media/edit.png" class="icon-green"></div>
-                        <span class="nav-text text-green">Properties</span>
+                    <a href="https://aunsw.netlify.app/" class="navItem" data-path="/home">
+                        <div class="icon-wrapper"><img src="../media/home.png" class="icon-green"></div>
+                        <span class="nav-text text-green">Home</span>
                     </a>
-                    <a href="https://aunsw.netlify.app/tree" class="navItem" data-path="/tree">
-                        <div class="icon-wrapper"><img src="../media/tree.png"></div>
-                        <span class="nav-text">Tree</span>
+                    <a href="https://aunsw.netlify.app/notifications" class="navItem" data-path="/notifications">
+                        <div class="icon-wrapper"><img src="../media/notifications.png"></div>
+                        <span class="nav-text">Notifications</span>
                     </a>
-                    <a href="https://aunsw.netlify.app/code" class="navItem" data-path="/code">
-                        <div class="icon-wrapper"><img src="../media/code.png"></div>
-                        <span class="nav-text">Code</span>
+                    <a href="https://aunsw.netlify.app/tools" class="navItem" data-path="/tools">
+                        <div class="icon-wrapper"><img src="../media/tools.png"></div>
+                        <span class="nav-text">Tools</span>
                     </a>
                     
                     <div class="nav-section"><span class="nav-title">RECENTLY UPDATED</span></div>
 
-                    <a href="https://aunsw.netlify.app/view" class="navItem" data-path="/view">
-                        <div class="icon-wrapper"><img src="../media/view.png"></div>
-                        <span class="nav-text">View</span>
+                    <a href="https://aunsw.netlify.app/projects/the-bridge" class="navItem" data-path="/projects/the-bridge">
+                        <div class="icon-wrapper"><img src="../media/projects/the-bridge.png"></div>
+                        <span class="nav-text">The Bridge</span>
                     </a>
-                    <a href="https://aunsw.netlify.app/export" class="navItem" data-path="/export">
-                        <div class="icon-wrapper"><img src="../media/export.png"></div>
-                        <span class="nav-text">Export</span>
+                    <a href="https://aunsw.netlify.app/projects/bobway" class="navItem" data-path="/projects/bobway">
+                        <div class="icon-wrapper"><img src="../media/projects/bobway.png"></div>
+                        <span class="nav-text">BOBWAY</span>
                     </a>
-
-                    <div class="nav-spacer"></div>
-
-                    <a href="https://aunsw.netlify.app/diff" class="navItem" data-path="/diff">
-                        <div class="icon-wrapper"><img src="../media/diff.png"></div>
-                        <span class="nav-text">Diff</span>
+                    <a href="https://aunsw.netlify.app/projects/whats-different" class="navItem" data-path="/projects/whats-different">
+                        <div class="icon-wrapper"><img src="../media/projects/whats-different.png"></div>
+                        <span class="nav-text">Whats Different</span>
+                    </a>
+                    <a href="https://aunsw.netlify.app/projects/ranks+" class="navItem" data-path="/projects/ranks+">
+                        <div class="icon-wrapper"><img src="../media/projects/ranks+.png"></div>
+                        <span class="nav-text">Ranks+</span>
+                    </a>
+                    <a href="https://aunsw.netlify.app/projects/site-tools" class="navItem" data-path="/projects/site-tools">
+                        <div class="icon-wrapper"><img src="../media/projects/site-tools.png"></div>
+                        <span class="nav-text">Website Tools</span>
                     </a>
                 </nav>
 
