@@ -22,7 +22,7 @@ class SiteHeader extends HTMLElement {
                 <nav class="navList">
                     <a href="https://hey36.netlify.app/" class="navItem" data-path="/">
                         <div class="icon-wrapper"><img src="../media/home.png"></div>
-                        <span class="nav-text text-green">Home</span>
+                        <span class="nav-text">Home</span>
                     </a>
                     <a href="https://hey36.netlify.app/notifications" class="navItem" data-path="/notifications">
                         <div class="icon-wrapper"><img src="../media/notifications.png"></div>
