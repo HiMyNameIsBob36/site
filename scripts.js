@@ -20,7 +20,7 @@ class SiteHeader extends HTMLElement {
         <div id="sidebar" class="sidebar ${isCollapsed ? 'collapsed' : ''}">
             <div class="sidebar-inner">
                 <nav class="navList">
-                    <a href="https://hey36.netlify.app/" class="navItem" data-path="/">
+                    <a href="https://hey36.netlify.app/" class="navItem" data-path="">
                         <div class="icon-wrapper"><img src="../media/home.png"></div>
                         <span class="nav-text">Home</span>
                     </a>
