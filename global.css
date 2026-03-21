@@ -215,3 +215,44 @@ main {
 }
 
 .notif-item.read .notif-link { color: #4ade80; }
+
+/* TOAST REVISIONS */
+.toast-close {
+    position: absolute;
+    top: 8px;      /* Strictly top-right */
+    right: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    color: #a1a1aa;
+    line-height: 1;
+}
+
+.toast-close:hover { color: white; }
+
+/* FOLLOWED PROJECTS LIST (For Notifications Page) */
+.followed-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #27262A;
+    padding: 12px 20px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    border: 1px solid #46494A;
+}
+
+.followed-item button {
+    background: #ef4444; /* Red for unfollow */
+    color: white;
+    border: none;
+    padding: 5px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+/* Ensure the layout doesn't overlap on small screens */
+.notif-item {
+    transition: transform 0.2s;
+}
+.notif-item:hover { transform: translateY(-2px); }
