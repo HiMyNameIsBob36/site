@@ -122,27 +122,27 @@ body {
     margin: 15px 10px;
 }*/
 
-.nav-section {
-    display: flex;
-    align-items: center;
+..nav-section {
+    position: relative;
     margin: 20px;
-    color: rgba(255,255,255,0.4);
-    font-size: 11px;
-    letter-spacing: 1px;
-}
-
-.nav-section::before,
-.nav-section::after {
-    content: "";
-    flex: 1;
     height: 1px;
     background: rgba(255,255,255,0.05);
 }
 
-.nav-section span {
-    padding: 0 10px;
+/* The text sitting on the line */
+.nav-title {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: rgba(255,255,255,0.4);
+    background: #0f0f0f; /* match your sidebar bg */
+    padding-right: 10px;
 }
 
+/* Collapsed state → hide EVERYTHING */
 .sidebar.collapsed .nav-section {
     display: none;
 }
