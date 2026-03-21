@@ -155,20 +155,33 @@ body {
     width: calc(100% - 20px);
 }
 
-/* TOAST ANIMATION */
-.update-toast {
+/* TOAST STACKING CONTAINER */
+#toast-container {
     position: fixed;
     bottom: 20px;
     right: 20px;
+    display: flex;
+    flex-direction: column-reverse; /* Newest items appear at the bottom */
+    gap: 15px;
+    z-index: 9999;
+    pointer-events: none; /* Allows clicking through empty space */
+}
+
+.update-toast {
+    pointer-events: auto; /* Re-enable clicks for the toast itself */
     width: 320px;
     background: #1e1e20;
     border: 1px solid #4ade80;
     border-radius: 12px;
     padding: 16px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-    z-index: 2000;
-    animation: slideIn 0.5s ease forwards;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+    position: relative;
+    animation: slideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
+
+/* Alert-specific styling (Yellow border for maintenance etc) */
+.update-toast.alert { border-color: #fbbf24; }
+.update-toast.alert h4 { color: #fbbf24; }
 
 @keyframes slideIn {
     from { transform: translateX(120%); opacity: 0; }
@@ -176,52 +189,24 @@ body {
 }
 
 .update-toast.hide {
-    animation: slideOut 0.5s ease forwards;
+    animation: slideOut 0.3s ease forwards;
 }
 
 @keyframes slideOut {
     to { transform: translateX(120%); opacity: 0; }
 }
 
-.toast-close {
-    position: absolute;
-    top: 10px;
-    right: 12px;
-    cursor: pointer;
-    font-size: 20px;
-    color: #a1a1aa;
+/* NOTIFICATION PAGE CLASSES */
+.notif-item.unread {
+    background: #ffffff;
+    color: #1a1a1b;
+    border-left: 5px solid #4ade80;
 }
 
-.toast-content h4 { margin: 0 0 8px 0; color: #4ade80; }
-.toast-content p { font-size: 13px; color: #d4d4d8; margin-bottom: 15px; }
-
-.toast-actions { display: flex; gap: 10px; }
-
-.btn-view, .btn-unfollow {
-    padding: 6px 12px;
-    border-radius: 6px;
-    font-size: 12px;
-    text-decoration: none;
-    cursor: pointer;
-    border: none;
+.notif-item.read {
+    background: #2d2d30;
+    color: #71717a;
+    border-left: 5px solid #3f3f46;
 }
 
-.btn-view { background: #4ade80; color: #111; font-weight: bold; }
-.btn-unfollow { background: #3f3f46; color: white; }
-
-/* NOTIFICATION PAGE STYLES */
-.notif-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px;
-    margin-bottom: 10px;
-    border-radius: 8px;
-    border-left: 4px solid #4ade80;
-}
-
-.notif-item.unread { background: white; color: #111; }
-.notif-item.unread .notif-link { color: #007bff; }
-
-.notif-item.read { background: #2d2d30; color: #a1a1aa; border-left-color: #3f3f46; }
 .notif-item.read .notif-link { color: #4ade80; }
