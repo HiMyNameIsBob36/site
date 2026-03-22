@@ -1,5 +1,4 @@
 /* --- FAVORITES & ALERTS SYSTEM --- */
-const UPDATES_FILE = './updates.json';
 let followed = JSON.parse(localStorage.getItem('followedProjects')) || [];
 let seenUpdates = JSON.parse(localStorage.getItem('seenUpdates')) || [];
 let clickedUpdates = JSON.parse(localStorage.getItem('clickedUpdates')) || [];
@@ -57,7 +56,7 @@ function updateHeartUI(btn, isActive) {
 
 async function checkForUpdates() {
     try {
-        const response = await fetch(UPDATES_FILE + '?t=' + Date.now());
+        const response = await fetch(alerts.json);
         const allUpdates = await response.json();
 
         allUpdates.forEach(item => {
