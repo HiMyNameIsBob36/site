@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Projects</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cozy Project Map</title>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     body {
@@ -11,122 +11,158 @@
       font-family: 'Inter', sans-serif;
       background: #f7f2df;
       color: #3e3a34;
+      overflow: hidden;
     }
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 40px;
-    }
-
-    header h1 {
+    h1 {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
       font-family: 'Quicksand', sans-serif;
-      font-weight: 600;
+      z-index: 2;
     }
 
-    nav a {
-      margin-left: 20px;
-      text-decoration: none;
-      color: #3e3a34;
-      font-weight: 500;
+    /* Map container */
+    .map {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      background: linear-gradient(#f7f2df, #efe6c8);
     }
 
-    .hero {
-      text-align: center;
-      padding: 60px 20px;
-    }
-
-    .hero h2 {
-      font-family: 'Quicksand', sans-serif;
-      font-size: 2.2em;
-      margin-bottom: 10px;
-    }
-
-    .hero p {
-      opacity: 0.8;
-    }
-
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
-      padding: 40px;
-    }
-
-    .card {
+    /* Buildings */
+    .building {
+      position: absolute;
+      width: 100px;
+      height: 100px;
       background: #fffaf0;
       border-radius: 16px;
-      padding: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      transition: 0.2s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-5px) scale(1.02);
-    }
-
-    .card h3 {
-      margin-top: 0;
-      font-family: 'Quicksand', sans-serif;
-    }
-
-    .tag {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 5px 10px;
-      border-radius: 8px;
-      font-size: 0.8em;
-      background: #e6a96b;
-      color: white;
-    }
-
-    footer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      padding: 20px;
-      opacity: 0.7;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: 0.2s;
+      font-size: 0.9em;
+      padding: 10px;
+    }
+
+    .building:hover {
+      transform: scale(1.08);
+    }
+
+    /* Positions */
+    .cafe { top: 20%; left: 20%; }
+    .shop { top: 60%; left: 25%; }
+    .lab { top: 30%; left: 60%; }
+    .house { top: 65%; left: 65%; }
+
+    /* Popup */
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.8);
+      background: #fffaf0;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      width: 300px;
+      text-align: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.25s;
+      z-index: 3;
+    }
+
+    .popup.active {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+      pointer-events: all;
+    }
+
+    .popup h2 {
+      font-family: 'Quicksand', sans-serif;
+      margin-top: 0;
+    }
+
+    .close {
+      margin-top: 20px;
+      padding: 8px 14px;
+      border: none;
+      background: #8b6f47;
+      color: white;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.2);
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.2s;
+      z-index: 2;
+    }
+
+    .overlay.active {
+      opacity: 1;
+      pointer-events: all;
     }
   </style>
 </head>
 <body>
 
-<header>
-  <h1>My Projects</h1>
-  <nav>
-    <a href="#">Home</a>
-    <a href="#">Projects</a>
-    <a href="#">About</a>
-  </nav>
-</header>
+<h1>My Project Town 🗺️</h1>
 
-<section class="hero">
-  <h2>Hey, I make things on the internet ✨</h2>
-  <p>Welcome to my cozy corner of the web.</p>
-</section>
+<div class="map">
+  <div class="building cafe" onclick="openPopup('cafe')">☕ Café</div>
+  <div class="building shop" onclick="openPopup('shop')">🛍 Shop</div>
+  <div class="building lab" onclick="openPopup('lab')">🧪 Lab</div>
+  <div class="building house" onclick="openPopup('house')">🏠 Home</div>
+</div>
 
-<section class="projects">
-  <div class="card">
-    <h3>Project One</h3>
-    <p>A cool thing I'm working on.</p>
-    <span class="tag">Web</span>
-  </div>
+<div class="overlay" id="overlay" onclick="closePopup()"></div>
 
-  <div class="card">
-    <h3>Project Two</h3>
-    <p>Something creative and fun.</p>
-    <span class="tag">Game</span>
-  </div>
+<!-- Popups -->
+<div class="popup" id="cafe">
+  <h2>Café Project</h2>
+  <p>A cozy web project or UI design.</p>
+  <button class="close" onclick="closePopup()">Close</button>
+</div>
 
-  <div class="card">
-    <h3>Project Three</h3>
-    <p>Another awesome idea.</p>
-    <span class="tag">Tool</span>
-  </div>
-</section>
+<div class="popup" id="shop">
+  <h2>Shop Project</h2>
+  <p>A marketplace or system idea.</p>
+  <button class="close" onclick="closePopup()">Close</button>
+</div>
 
-<footer>
-  © 2026 My Projects
-</footer>
+<div class="popup" id="lab">
+  <h2>Lab Project</h2>
+  <p>Experiments, tools, or dev work.</p>
+  <button class="close" onclick="closePopup()">Close</button>
+</div>
+
+<div class="popup" id="house">
+  <h2>About Me</h2>
+  <p>This is where your intro goes.</p>
+  <button class="close" onclick="closePopup()">Close</button>
+</div>
+
+<script>
+  function openPopup(id) {
+    document.getElementById(id).classList.add('active');
+    document.getElementById('overlay').classList.add('active');
+  }
+
+  function closePopup() {
+    document.querySelectorAll('.popup').forEach(p => p.classList.remove('active'));
+    document.getElementById('overlay').classList.remove('active');
+  }
+</script>
 
 </body>
 </html>
